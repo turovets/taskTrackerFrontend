@@ -21,10 +21,9 @@ let builder = (httpMethod, apiMethod, params) => {
 		? LOGIN_HEADERS
 		: apiMethod === "/api/users"
 		?	HEADERS :
-		Object.assign(
-			HEADERS,
-			{'Authorization' : `bearer ${window.localStorage.access_token}`}
-		);
+		{ ...HEADERS,
+			'Authorization' : `bearer ${window.localStorage.access_token}`
+		};
 
 	apiMethod = SERVER + apiMethod;
 

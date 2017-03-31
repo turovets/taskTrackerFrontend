@@ -8,13 +8,21 @@ const task = (
 ) => {
 	switch (action.type) {
 		case ADD_TASK:
-			return [
-				...state,
-				{
-					id: action.id,
-					name: action.name,
-				}
-			];
+			let tasks = [...state.tasks];
+
+			tasks.push({
+			id: action.id,
+				name: action.name,
+				description: action.description,
+				dueDate: action.dueDate,
+				status: action.status
+		});
+
+		return {
+			...state,
+			tasks
+		};
+
 		default:
 			return state;
 	}

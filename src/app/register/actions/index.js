@@ -24,7 +24,7 @@ export const registerError = (errorMessage) => {
 	return {
 		type: REGISTER_FAILURE,
 		isFetching: false,
-		errorMessage: 'Error! Try again!'
+		errorMessage: 'Error! Try again'
 	}
 };
 
@@ -42,7 +42,7 @@ export function registerUser(creds) {
 		return Request.post('/api/users', params)
 			.then((user) => {
 				dispatch(receiveRegister(user));
-				browserHistory.push('/login');
+				browserHistory.push('/auth/login');
 			})
 			.catch((err) => {
 				dispatch(registerError(err));

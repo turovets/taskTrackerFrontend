@@ -6,7 +6,8 @@ class Login extends React.Component {
     super(props)
   }
 
-	handleClick (event) {
+	handleClick (e) {
+  	e.preventDefault();
 		const username = this.refs.username;
 		const password = this.refs.password;
 		const creds = {
@@ -17,20 +18,53 @@ class Login extends React.Component {
 	}
 
 	render() {
-		const { errorMessage } = this.props;
+
 
 		return (
 			<div>
-				<input type='text' ref='username' className="form-control" placeholder='Username'/>
-				<input type='password' ref='password' className="form-control" placeholder='Password'/>
-				<button onClick={(event) => this.handleClick(event)} className="btn btn-primary">
-					Sign In
-				</button>
-				<Link to={`/register`} className="btn btn-primary">Sign up</Link>
-
-				{errorMessage &&
-				<p>{errorMessage}</p>
-				}
+				<form action="#" className="login-form" method="post">
+					<div className="alert alert-danger display-hide">
+						<button className="close"></button>
+						<span>Enter any username and password. </span>
+					</div>
+					<div className="row">
+						<div className="col-xs-6">
+							<input type='text'
+										 ref='username'
+										 placeholder='Username'
+										 className="form-control form-control-solid placeholder-no-fix form-group"
+										 name="username"
+										 required
+							/>
+						</div>
+						<div className="col-xs-6">
+							<input type='password'
+										 ref='password'
+										 placeholder='Password'
+										 className="form-control form-control-solid placeholder-no-fix form-group"
+										 name="password"
+										 required
+							/>
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-sm-4">
+							<label className="rememberme mt-checkbox mt-checkbox-outline">
+								<input type="checkbox" name="remember" value="1" /> Remember me
+								<span></span>
+							</label>
+						</div>
+						<div className="col-sm-8 text-right">
+							<Link to={`/auth/register`}
+										className="btn blue"
+										style={{marginRight: '10px'}}
+							>
+								Sign up
+							</Link>
+							<button className="btn blue" type="submit" onClick={(event) => this.handleClick(event)}>Sign In</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		)
 	}

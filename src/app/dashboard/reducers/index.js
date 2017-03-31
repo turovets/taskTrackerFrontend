@@ -26,11 +26,16 @@ const dashboard = (
     }
 
     case ADD_TASK:
-		  let tasks = [...state.tasks];
+			let tasks = [...state.tasks];
+
 			tasks.push({
 				id: action.id,
 				name: action.name,
+				description: action.description,
+				dueDate: action.dueDate,
+				status: action.status
 			});
+
 			return {
 				...state,
 				tasks

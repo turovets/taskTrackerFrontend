@@ -21,15 +21,36 @@ class Register extends React.Component {
 	}
 
 	render() {
-		const { errorMessage } = this.props;
+		const { errorMessage } = this.props.register;
 
 		return (
 			<div>
-				<input type='text' ref='username' className="form-control" placeholder='Username'/>
-				<input type='email' ref='email' className="form-control" placeholder='Email'/>
-				<input type='password' ref='password' className="form-control" placeholder='Password'/>
-				<input type='password' ref='confirmPassword' className="form-control" placeholder='Password'/>
-				<button onClick={(event) => this.handleClick()} className="btn btn-primary">
+				<input type='text'
+							 ref='username'
+							 className="form-control form-control-solid placeholder-no-fix form-group"
+							 placeholder='Username'
+							 required
+				/>
+				<input type='email' 
+							 ref='email'
+							 className="form-control form-control-solid placeholder-no-fix form-group"
+							 placeholder='Email'
+							 required
+				/>
+				<input 
+					type='password' 
+					ref='password'
+					className="form-control form-control-solid placeholder-no-fix form-group"
+					placeholder='Password'
+					required
+				/>
+				<input type='password'
+							 ref='confirmPassword'
+							 className="form-control form-control-solid placeholder-no-fix form-group"
+							 placeholder='Confirm password'
+							 required
+				/>
+				<button onClick={(event) => this.handleClick()} className="btn blue">
 					Sign Up
 				</button>
 
@@ -37,7 +58,12 @@ class Register extends React.Component {
 				<p>{errorMessage}</p>
 				}
 
-				<Link to={`/login`}>Back to Login</Link>
+				<Link to={`/auth/login`}
+							className="btn blue"
+							style={{marginLeft: '10px'}}
+				>
+					Sign in
+				</Link>
 			</div>
 		)
 	}

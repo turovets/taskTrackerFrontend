@@ -4,7 +4,7 @@ import registerForm from '../components/register'
 
 const mapStateToProps = (state) => {
   return {
-		auth: state.auth
+		register: state.register
 	}
 };
 

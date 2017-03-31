@@ -1,26 +1,50 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
-import { Button, Tooltip } from 'react-bootstrap';
-import SideNav from './sideNav/containers/SideNav';
 import Navbar from './navBar/containers/Navbar';
+import { getUser } from './auth/actions';
+import { connect } from 'react-redux';
+import SideNav from '../app/sideNav/components/SideNav';
 
 class Main extends Component {
   constructor(props) {
     super(props);
   }
 
+	componentWillMount() {
+		this.props.getUser();
+  }
 
   render() {
-    return (
-      <div className="container">
-        <Navbar />
 
-        {this.props.children}
+    if (!this.props.auth.isAuthenticated) return null;
+
+    return (
+			<div>
+        <Navbar />
+				<div className="page-container">
+					<SideNav />
+        	{this.props.children}
+				</div>
 
         <Link to={`/dashboard`}>dashboard</Link>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+	return {
+		auth: state.auth
+	}
+};
+
+const mapDispatchToProps = {
+	getUser
+};
+
+Main = connect(
+	mapStateToProps,
+  mapDispatchToProps,
+)(Main);
 
 export default Main;

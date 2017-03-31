@@ -6,7 +6,9 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
-export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+export const USER_REQUEST = 'USER_REQUEST';
+export const USER_SUCCESS = 'USER_SUCCESS';
+export const USER_FAILURE = 'USER_FAILURE';
 
 export const requestLogin = (creds) => {
 	return {
@@ -31,7 +33,7 @@ export const loginError = (message) => {
 		type: LOGIN_FAILURE,
 		isFetching: false,
 		isAuthenticated: false,
-		message
+		message: 'Error! Try again'
 	}
 };
 
@@ -51,6 +53,32 @@ function receiveLogout() {
 		isAuthenticated: false
 	}
 }
+
+export const requestGetUser = () => {
+	return {
+		type: USER_REQUEST,
+		isFetching: true,
+		isAuthenticated: false,
+	}
+};
+
+export const receiveGetUser = (user) => {
+	return {
+		type: USER_SUCCESS,
+		isFetching: false,
+		isAuthenticated: true,
+		user
+	}
+};
+
+export const getUserError = () => {
+	return {
+		type: USER_FAILURE,
+		isFetching: false,
+		isAuthenticated: false,
+	}
+};
+
 
 export function loginUser(creds) {
 
@@ -80,6 +108,20 @@ export function logoutUser() {
 		dispatch(requestLogout());
 		localStorage.removeItem('access_token');
 		dispatch(receiveLogout());
-		browserHistory.push('/login');
+		browserHistory.push('/auth/login');
+	}
+}
+
+export function getUser() {
+	return dispatch => {
+		dispatch(requestGetUser());
+		Request.get('/api/users/me')
+			.then(user => {
+				dispatch(receiveGetUser(user));
+			})
+			.catch((err) => {
+				dispatch(getUserError());
+				browserHistory.push('/auth/login');
+			});
 	}
 }

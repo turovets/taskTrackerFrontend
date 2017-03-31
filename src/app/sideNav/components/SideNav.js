@@ -1,13 +1,33 @@
 import React from 'react';
-import SideNavHeader from './SideNavHeader';
 
-const SideNav = ({max, sideNav, inputOnChange, changeHeaderTitle}) => (
-    <div>
-      <h4>{max}</h4>
-      <SideNavHeader headerTitle={sideNav.headerTitle} />
-      <button className="btn btn-primary" onClick={() => changeHeaderTitle()}>Update header</button>
-      <input type="text" value={sideNav.inputVal} onChange={(e) => inputOnChange(e.target.value)} />
+const SideNav = ({headerTitle}) => (
+  <div className="page-sidebar-wrapper">
+    <div className="page-sidebar navbar-collapse collapse">
+      <ul className="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+        <li className="nav-item start active">
+          <a href="#" className="nav-link nav-toggle">
+            <i className="icon-home"></i>
+            <span className="title">Dashboard</span>
+            <span className="selected"></span>
+          </a>
+        </li>
+        <li className="nav-item">
+          <a href="#" className="nav-link nav-toggle">
+            <i className="icon-layers"></i>
+            <span className="title">Projects</span>
+            <span className="selected"></span>
+          </a>
+        </li>
+        <li className="nav-item">
+          <a href="#" className="nav-link nav-toggle">
+            <i className="icon-user"></i>
+            <span className="title">Account</span>
+            <span className="selected"></span>
+          </a>
+        </li>
+      </ul>
     </div>
+  </div>
 )
 
 export default SideNav;

@@ -5,6 +5,7 @@ import dashboardPage from '../components/dashboardPage'
 const mapStateToProps = (state) => {
   return {
 		dashboard: state.dashboard,
+		task: state.task,
 		max: 'msadsadax'
 	}
 };

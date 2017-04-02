@@ -6,8 +6,8 @@ const dashboard = (
   state = {
     projects: [], 
     tasks: [], 
-	userData: [],
-	isFetching: false
+		userData: [],
+		isFetching: false
   },
   action
 ) => {

@@ -104,7 +104,7 @@ class TaskForm extends React.Component {
 												value={this.state.status}
 												onChange={(e) => this.handleInputChange(e)}
 												className="form-control todo-taskbody-tags select2-hidden-accessible"
-												tabindex="-1" aria-hidden="true">
+												tabIndex="-1" aria-hidden="true">
 									<option value="Pending">Pending</option>
 									<option value="Completed">Completed</option>
 									<option value="Testing">Testing</option>

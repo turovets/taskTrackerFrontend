@@ -1,5 +1,4 @@
 import React from 'react';
-import { addProject } from '../actions';
 
 let Project = ({ dispatch }) => {
 

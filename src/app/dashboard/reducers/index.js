@@ -1,11 +1,13 @@
 import { GET_TASK, GET_USER_DATA } from '../actions';
 import { ADD_TASK } from '../../task/actions';
+import { ADD_PROJECT, GET_PROJECTS_SUCCESS } from '../../project/actions';
 
 const dashboard = (
   state = {
-    tasks: [],
-		userData: [],
-		isFetching: false
+    projects: [], 
+    tasks: [], 
+	userData: [],
+	isFetching: false
   },
   action
 ) => {
@@ -25,6 +27,13 @@ const dashboard = (
       }
     }
 
+	  case GET_PROJECTS_SUCCESS: {
+		  return {
+			  ...state,
+			  projects: action.projects
+		  }
+	  }	  
+
     case ADD_TASK:
 			let tasks = [...state.tasks];
 
@@ -41,7 +50,22 @@ const dashboard = (
 				tasks
 			};
 
-    default:
+	  case ADD_PROJECT:
+		  let projects = [...state.projects];
+
+		  projects.push({
+			  id: action.id,
+			  name: action.name,
+			  description: action.description,
+			  dueDate: action.dueDate
+		  });
+
+		  return {
+			  ...state,
+			  projects
+		  };
+
+	  default:
       return state
   }
 };

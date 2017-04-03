@@ -25,8 +25,6 @@ class Main extends Component {
 					<SideNav />
         	{this.props.children}
 				</div>
-
-        <Link to={`/dashboard`}>dashboard</Link>
       </div>
     );
   }

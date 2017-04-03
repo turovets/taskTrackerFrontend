@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
-import project from '../components/Project';
-import { addProject } from '../actions';
-
+import projectContainer from '../components/ProjectContainer';
+import { addProject } from '../actions'
 
 function mapStateToProps (state) {
 	return {
-		project: state.project
+		project: state.project,
 	}
 }
 
@@ -13,10 +12,10 @@ const mapDispatchToProps = {
 	addProject
 };
 
-let Project = connect(
+let ProjectContainer = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(project);
+)(projectContainer);
 
-export default Project
+export default ProjectContainer
 

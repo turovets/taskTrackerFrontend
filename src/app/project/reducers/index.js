@@ -2,8 +2,7 @@ import { ADD_PROJECT, GET_PROJECTS_SUCCESS } from '../actions';
 
 const project = (
 	state = {
-		tasks: [],
-		userData: [],
+		projects: [],
 		isFetching: false
 	},
 	action
@@ -13,7 +12,7 @@ const project = (
 		case GET_PROJECTS_SUCCESS: {
 			return {
 				...state,
-				projects: action.projects
+				projects: action.projects.content
 			}
 		}
 

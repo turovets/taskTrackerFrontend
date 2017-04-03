@@ -37,3 +37,21 @@ export const getProjects = () => (dispatch) => {
 			})
 		})
 };
+
+
+function shouldFetchProjects(state) {
+	const project = state.project;
+	if (!project.projects.length) {
+		return true
+	} else if (project.isFetching) {
+		return false
+	}
+}
+
+export function fetchProjectsIfNeeded() {
+	return (dispatch, getState) => {
+		if (shouldFetchProjects(getState())) {
+			return dispatch(getProjects())
+		}
+	}
+}

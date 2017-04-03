@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 //import TaskForm from '../../task/components/TaskForm';
 import TaskContainer from '../../task/containers/TaskContainer';
+import ProjectContainer from '../../project/containers/Project';
 
 class Dashboard extends React.Component {
 	constructor(props) {
@@ -10,6 +11,7 @@ class Dashboard extends React.Component {
 
 	componentDidMount() {
 		this.props.fetchTasksIfNeeded();
+		this.props.fetchProjectsIfNeeded();
 	}
 
 	render() {
@@ -46,7 +48,7 @@ class Dashboard extends React.Component {
 											<div className="actions">
 												<div className="btn-group">
 													<a className="btn green btn-circle btn-outline btn-sm todo-projects-config" href="#"
-														 data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+													   data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 														<i className="icon-settings"></i> &nbsp;
 														<i className="fa fa-angle-down"></i>
 													</a>
@@ -81,30 +83,19 @@ class Dashboard extends React.Component {
 										<div className="portlet-body todo-project-list-content" style={{height: 'auto'}}>
 											<div className="todo-project-list">
 												<ul className="nav nav-stacked">
-													<li>
-														<a href="#">
-															<span className="badge badge-info"> 6 </span> AirAsia Ads </a>
-													</li>
-													<li>
-														<a href="#">
-															<span className="badge badge-success"> 2 </span> HSBC Promo </a>
-													</li>
-													<li className="active">
-														<a href="#">
-															<span className="badge badge-success"> 3 </span> GlobalEx</a>
-													</li>
-													<li>
-														<a href="#">
-															<span className="badge badge-default"> 14 </span> Empire City </a>
-													</li>
-													<li>
-														<a href="#">
-															<span className="badge badge-info"> 6 </span> AirAsia Ads </a>
-													</li>
-													<li>
-														<a href="#">
-															<span className="badge badge-danger"> 2 </span> Loop Inc Promo </a>
-													</li>
+													{
+														this.props.project.projects.length ?
+															<ul>
+																{this.props.project.projects.map(project => (
+																	<li key={project.id}>
+																		<a href="#">
+																			<span className="badge badge-info"> 6 </span> {project.name} </a>
+																	</li>
+																))}
+															</ul>
+															:
+															<h4>No projects !</h4>
+													}
 												</ul>
 											</div>
 										</div>

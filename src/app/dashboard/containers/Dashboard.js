@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
-import { fetchTasksIfNeeded, getUserData } from '../actions'
+import { fetchProjectsIfNeeded } from '../../project/actions'
+import { fetchTasksIfNeeded } from '../../task/actions'
+import { getUserData } from '../actions'
 import dashboardPage from '../components/dashboardPage'
 
 const mapStateToProps = (state) => {
   return {
 		dashboard: state.dashboard,
-		task: state.task,
-		max: 'msadsadax'
+		project: state.project,
+		task: state.task
 	}
 };
 
 const mapDispatchToProps = {
 	fetchTasksIfNeeded,
-	getUserData
+	fetchProjectsIfNeeded,
 };
 
 let Dashboard = connect(

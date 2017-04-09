@@ -5,13 +5,11 @@ export const GET_PROJECTS_REQUEST = 'GET_PROJECT_REQUEST';
 export const GET_PROJECTS_SUCCESS = 'GET_PROJECT_SUCCESS';
 let nextProjectId = 0;
 
-export const addProject = (text) => {
-	return {
-		type: ADD_PROJECT,
-		id: nextProjectId++,
-		name: text
-	};
-};
+export const addProject = (text) => ({
+	type: ADD_PROJECT,
+	id: nextProjectId++,
+	name: text
+});
 
 // export const requestProjects = () => {
 // 	return {
@@ -38,7 +36,6 @@ export const getProjects = () => (dispatch) => {
 		})
 };
 
-
 function shouldFetchProjects(state) {
 	const project = state.project;
 	if (!project.projects.length) {
@@ -48,10 +45,10 @@ function shouldFetchProjects(state) {
 	}
 }
 
-export function fetchProjectsIfNeeded() {
+export const fetchProjectsIfNeeded = () => {
 	return (dispatch, getState) => {
 		if (shouldFetchProjects(getState())) {
 			return dispatch(getProjects())
 		}
 	}
-}
+};

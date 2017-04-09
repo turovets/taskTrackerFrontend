@@ -10,32 +10,26 @@ export const USER_REQUEST = 'USER_REQUEST';
 export const USER_SUCCESS = 'USER_SUCCESS';
 export const USER_FAILURE = 'USER_FAILURE';
 
-export const requestLogin = (creds) => {
-	return {
-		type: LOGIN_REQUEST,
-		isFetching: true,
-		isAuthenticated: false,
-		creds
-	}
-};
+export const requestLogin = (creds) => ({
+	type: LOGIN_REQUEST,
+	isFetching: true,
+	isAuthenticated: false,
+	creds
+});
 
-export const receiveLogin = (user) => {
-	return {
-		type: LOGIN_SUCCESS,
-		isFetching: false,
-		isAuthenticated: true,
-		access_token: user.access_token
-	}
-};
+export const receiveLogin = (user) => ({
+	type: LOGIN_SUCCESS,
+	isFetching: false,
+	isAuthenticated: true,
+	access_token: user.access_token
+});
 
-export const loginError = (message) => {
-	return {
-		type: LOGIN_FAILURE,
-		isFetching: false,
-		isAuthenticated: false,
-		message: 'Error! Try again'
-	}
-};
+export const loginError = (message) => ({
+	type: LOGIN_FAILURE,
+	isFetching: false,
+	isAuthenticated: false,
+	message: 'Error! Try again'
+});
 
 
 function requestLogout() {
@@ -54,31 +48,24 @@ function receiveLogout() {
 	}
 }
 
-export const requestGetUser = () => {
-	return {
-		type: USER_REQUEST,
-		isFetching: true,
-		isAuthenticated: false,
-	}
-};
+export const requestGetUser = () => ({
+	type: USER_REQUEST,
+	isFetching: true,
+	isAuthenticated: false
+});
 
-export const receiveGetUser = (user) => {
-	return {
-		type: USER_SUCCESS,
-		isFetching: false,
-		isAuthenticated: true,
-		user
-	}
-};
+export const receiveGetUser = (user) => ({
+	type: USER_SUCCESS,
+	isFetching: false,
+	isAuthenticated: true,
+	user
+});
 
-export const getUserError = () => {
-	return {
-		type: USER_FAILURE,
-		isFetching: false,
-		isAuthenticated: false,
-	}
-};
-
+export const getUserError = () => ({
+	type: USER_FAILURE,
+	isFetching: false,
+	isAuthenticated: false
+});
 
 export function loginUser(creds) {
 
@@ -93,7 +80,7 @@ export function loginUser(creds) {
 		return Request.post('/api/login', params)
 			.then((user) => {
 				localStorage.setItem('access_token', user.access_token);
-					dispatch(receiveLogin(user));
+				dispatch(receiveLogin(user));
 				browserHistory.push('/dashboard');
 			})
 			.catch((err) => {
@@ -103,16 +90,16 @@ export function loginUser(creds) {
 }
 
 // Logs the user out
-export function logoutUser() {
+export const logoutUser = () => {
 	return dispatch => {
 		dispatch(requestLogout());
 		localStorage.removeItem('access_token');
 		dispatch(receiveLogout());
 		browserHistory.push('/auth/login');
 	}
-}
+};
 
-export function getUser() {
+export const getUser = () => {
 	return dispatch => {
 		dispatch(requestGetUser());
 		Request.get('/api/users/me')
@@ -124,4 +111,4 @@ export function getUser() {
 				browserHistory.push('/auth/login');
 			});
 	}
-}
+};

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 
 const SideNav = ({headerTitle}) => (
   <div className="page-sidebar-wrapper">
@@ -29,6 +28,6 @@ const SideNav = ({headerTitle}) => (
       </ul>
     </div>
   </div>
-)
+);
 
 export default SideNav;

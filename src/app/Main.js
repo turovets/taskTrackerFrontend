@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router';
 import Navbar from './navBar/containers/Navbar';
 import { getUser } from './auth/actions';
 import { connect } from 'react-redux';
@@ -30,11 +29,9 @@ class Main extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-	return {
-		auth: state.auth
-	}
-};
+const mapStateToProps = (state) => ({
+	auth: state.auth
+});
 
 const mapDispatchToProps = {
 	getUser

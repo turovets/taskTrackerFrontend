@@ -5,30 +5,24 @@ export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 
-export const requestRegister = (creds) => {
-	return {
-		type: REGISTER_REQUEST,
-		isFetching: true,
-		creds
-	}
-};
+export const requestRegister = (creds) => ({
+	type: REGISTER_REQUEST,
+	isFetching: true,
+	creds
+});
 
-export const receiveRegister = (user) => {
-	return {
-		type: REGISTER_SUCCESS,
-		isFetching: false,
-	}
-};
+export const receiveRegister = (user) => ({
+	type: REGISTER_SUCCESS,
+	isFetching: false
+});
 
-export const registerError = (errorMessage) => {
-	return {
-		type: REGISTER_FAILURE,
-		isFetching: false,
-		errorMessage: 'Error! Try again'
-	}
-};
+export const registerError = (errorMessage) => ({
+	type: REGISTER_FAILURE,
+	isFetching: false,
+	errorMessage: 'Error! Try again'
+});
 
-export function registerUser(creds) {
+export const registerUser = (creds) => {
 
 	let params = {
 		'email': creds.email,
@@ -49,4 +43,4 @@ export function registerUser(creds) {
 				console.log(err);
 			})
 	}
-}
+};

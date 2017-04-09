@@ -5,16 +5,14 @@ export const GET_TASK = 'GET_TASK';
 
 let nextTaskId = 0;
 
-export const addTask = (task) => {
-	return {
-		type: ADD_TASK,
-		id: nextTaskId++,
-		name: task.title,
-		description: task.description,
-		dueDate: task.dueDate,
-		status: task.status
-	};
-};
+export const addTask = (task) => ({
+	type: ADD_TASK,
+	id: nextTaskId++,
+	name: task.title,
+	description: task.description,
+	dueDate: task.dueDate,
+	status: task.status
+});
 
 export const getTasks = () => (dispatch) => {
 	Request.get('/api/tasks')
@@ -35,10 +33,10 @@ function shouldFetchTasks(state) {
 	}
 }
 
-export function fetchTasksIfNeeded() {
+export const fetchTasksIfNeeded = () => {
 	return (dispatch, getState) => {
 		if (shouldFetchTasks(getState())) {
 			return dispatch(getTasks())
 		}
 	}
-}
+};

@@ -4,17 +4,15 @@ import { fetchTasksIfNeeded } from '../../task/actions'
 import { getUserData } from '../actions'
 import dashboardPage from '../components/dashboardPage'
 
-const mapStateToProps = (state) => {
-  return {
-		dashboard: state.dashboard,
-		project: state.project,
-		task: state.task
-	}
-};
+const mapStateToProps = (state) => ({
+	dashboard: state.dashboard,
+	project: state.project,
+	task: state.task
+});
 
 const mapDispatchToProps = {
 	fetchTasksIfNeeded,
-	fetchProjectsIfNeeded,
+	fetchProjectsIfNeeded
 };
 
 let Dashboard = connect(

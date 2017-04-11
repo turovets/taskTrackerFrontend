@@ -1,13 +1,12 @@
 import Request from '../../request'
+import { v4 } from 'node-uuid'
 
 export const ADD_TASK = 'ADD_TASK';
 export const GET_TASK = 'GET_TASK';
 
-let nextTaskId = 0;
-
 export const addTask = (task) => ({
 	type: ADD_TASK,
-	id: nextTaskId++,
+	id: v4(),
 	name: task.title,
 	description: task.description,
 	dueDate: task.dueDate,
@@ -25,7 +24,7 @@ export const getTasks = () => (dispatch) => {
 };
 
 function shouldFetchTasks(state) {
-	const task = state.task;
+	const { task } = state;
 	if (!task.tasks.length) {
 		return true
 	} else if (task.isFetching) {

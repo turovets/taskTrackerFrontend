@@ -1,13 +1,13 @@
 import Request from '../../request'
+import { v4 } from 'node-uuid'
 
 export const ADD_PROJECT = 'ADD_PROJECT';
 export const GET_PROJECTS_REQUEST = 'GET_PROJECT_REQUEST';
 export const GET_PROJECTS_SUCCESS = 'GET_PROJECT_SUCCESS';
-let nextProjectId = 0;
 
 export const addProject = (text) => ({
 	type: ADD_PROJECT,
-	id: nextProjectId++,
+	id: v4(),
 	name: text
 });
 
@@ -37,7 +37,7 @@ export const getProjects = () => (dispatch) => {
 };
 
 function shouldFetchProjects(state) {
-	const project = state.project;
+	const { project } = state;
 	if (!project.projects.length) {
 		return true
 	} else if (project.isFetching) {

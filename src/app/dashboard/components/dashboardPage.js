@@ -3,6 +3,7 @@ import {Link} from 'react-router';
 //import TaskForm from '../../task/components/TaskForm';
 import TaskContainer from '../../task/containers/TaskContainer';
 import ProjectContainer from '../../project/containers/Project';
+import moment from 'moment';
 
 class Dashboard extends React.Component {
 	constructor(props) {
@@ -202,7 +203,7 @@ class Dashboard extends React.Component {
 																			<div className="todo-tasklist-controls pull-left">
                                                                 <span className="todo-tasklist-date">
                                                                     <i
-																																			className="fa fa-calendar"></i> {task.dueDate} </span>
+																																			className="fa fa-calendar"></i> {moment(task.dueDate).format('DD-MM-YYYY')} </span>
 																				<span className="todo-tasklist-badge badge badge-roundless">{task.status}</span>
 																			</div>
 																		</div>

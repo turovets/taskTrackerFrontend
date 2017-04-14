@@ -7,7 +7,7 @@ import createLogger from 'redux-logger';
 import rootReducer from './rootReducer';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Dashboard from './dashboard/containers/dashboard';
-import Task from './task/containers/TaskContainer';
+import Task from './tasks/containers/TaskContainer';
 import Main from './Main';
 import Auth from './auth/components/Auth';
 import Login from './auth/containers/Login';

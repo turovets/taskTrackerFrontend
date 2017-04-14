@@ -31,16 +31,16 @@ export const getProjects = () => (dispatch) => {
 		.then(projects => {
 			dispatch({
 				type: GET_PROJECTS_SUCCESS,
-				projects: projects
+				projectList: projects.content
 			})
 		})
 };
 
 function shouldFetchProjects(state) {
-	const { project } = state;
-	if (!project.projects.length) {
+	const { projects } = state;
+	if (!projects.projectList.length) {
 		return true
-	} else if (project.isFetching) {
+	} else if (projects.isFetching) {
 		return false
 	}
 }

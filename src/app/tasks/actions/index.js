@@ -24,10 +24,10 @@ export const getTasks = () => (dispatch) => {
 };
 
 function shouldFetchTasks(state) {
-	const { task } = state;
-	if (!task.tasks.length) {
+	const { tasks } = state;
+	if (!tasks.taskList.length) {
 		return true
-	} else if (task.isFetching) {
+	} else if (tasks.isFetching) {
 		return false
 	}
 }

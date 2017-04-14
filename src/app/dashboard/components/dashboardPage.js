@@ -1,8 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router';
-//import TaskForm from '../../task/components/TaskForm';
-import TaskContainer from '../../task/containers/TaskContainer';
-import ProjectContainer from '../../project/containers/Project';
+import TaskContainer from '../../tasks/containers/TaskContainer';
 import moment from 'moment';
 
 class Dashboard extends React.Component {
@@ -85,9 +82,9 @@ class Dashboard extends React.Component {
 											<div className="todo-project-list">
 												<ul className="nav nav-stacked">
 													{
-														this.props.project.projects.length ?
+														this.props.projects.projectList.length ?
 															<ul>
-																{this.props.project.projects.map(project => (
+																{this.props.projects.projectList.map(project => (
 																	<li key={project.id}>
 																		<a href="#">
 																			<span className="badge badge-info"> 6 </span> {project.name} </a>
@@ -191,9 +188,9 @@ class Dashboard extends React.Component {
 												<div className="col-md-5 col-sm-4">
 
 														{
-															this.props.task.tasks.length ?
+															this.props.tasks.taskList.length ?
 																<div className="todo-tasklist">
-																	{this.props.task.tasks.map(task => (
+																	{this.props.tasks.taskList.map(task => (
 																		<div key={task.id} className="todo-tasklist-item todo-tasklist-item-border-green">
 																			<img className="todo-userpic pull-left" src="assets/pages/media/users/avatar4.jpg"
 																					 style={{width: '27px', height: '27px'}}/>

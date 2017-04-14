@@ -3,7 +3,7 @@ import projectContainer from '../components/ProjectContainer';
 import { addProject } from '../actions'
 
 const mapStateToProps = (state) => ({
-	project: state.project
+	projects: state.projects
 });
 
 const mapDispatchToProps = {

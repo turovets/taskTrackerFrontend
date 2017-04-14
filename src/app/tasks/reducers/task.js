@@ -1,27 +1,18 @@
 import { ADD_TASK } from '../actions'
 
 const task = (
-	state = {
-		tasks: []
-	},
+	state,
 	action
 ) => {
 	switch (action.type) {
 		case ADD_TASK:
-			let tasks = [...state.tasks];
-
-			tasks.push({
-			id: action.id,
+			return {
+				id: action.id,
 				name: action.name,
 				description: action.description,
 				dueDate: action.dueDate,
 				status: action.status
-		});
-
-		return {
-			...state,
-			tasks
-		};
+			};
 
 		default:
 			return state;

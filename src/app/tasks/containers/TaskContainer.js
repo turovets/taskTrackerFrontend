@@ -3,7 +3,7 @@ import TaskForm from '../components/TaskForm'
 import { addTask } from '../actions';
 
 const mapStateToProps = (state) => ({
-	task: state.task
+	task: state.taskList
 });
 
 const mapDispatchToProps = {

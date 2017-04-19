@@ -8,6 +8,7 @@ import rootReducer from './rootReducer';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Dashboard from './dashboard/containers/dashboard';
 import Task from './tasks/containers/TaskContainer';
+import ProjectContainer from './projects/containers/ProjectContainer';
 import Main from './Main';
 import Auth from './auth/components/Auth';
 import Login from './auth/containers/Login';
@@ -24,6 +25,7 @@ render(
       <Route path="/" component={Main}>
         <Route path="dashboard" component={Dashboard} />
         <Route path="task" component={Task} />
+        <Route path="projects" component={ProjectContainer} />
       </Route>
       <Route path="/auth" component={Auth}>
         <Route path="login" component={Login} />

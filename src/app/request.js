@@ -9,7 +9,7 @@ const HEADERS = {
 	Accept: 'application/json'
 };
 
-const SERVER = "http://localhost:9050";
+const SERVER = "http://localhost:9081";
 
 let builder = (httpMethod, apiMethod, params) => {
 

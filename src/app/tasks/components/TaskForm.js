@@ -21,7 +21,7 @@ class TaskForm extends React.Component {
 
 	}
 
-	handleDatePickerChange(value, formattedValue) {
+	handleDatePickerChange(value) {
 		let state = {...this.state};
 
 		state.dueDate = value;
@@ -94,7 +94,6 @@ class TaskForm extends React.Component {
 					<div className="form-group">
 						<div className="col-md-12">
 							<div className="input-icon">
-								<i className="fa fa-calendar"></i>
 								<DatePicker id="example-datepicker"
 								            calendarContainer={document.body}
 								            className="form-control todo-taskbody-due"
@@ -113,7 +112,7 @@ class TaskForm extends React.Component {
 								<option value="Pending">Pending</option>
 								<option value="Completed">Completed</option>
 								<option value="Testing">Testing</option>
-								<option value="Approved">Approed</option>
+								<option value="Approved">Approved</option>
 								<option value="Rejected">Rejected</option>
 							</select>
 						</div>

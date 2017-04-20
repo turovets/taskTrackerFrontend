@@ -8,10 +8,8 @@ const mapDispatchToProps = {
   changeHeaderTitle
 };
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
-    sideNav: state.sideNav,
-		max: 'msadsadax'
 }
 };
 

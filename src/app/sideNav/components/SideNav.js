@@ -1,37 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router';
+import SideNavItem from './SideNavItem';
 
-const SideNav = ({headerTitle}) => (
-  <div className="page-sidebar-wrapper">
-    <div className="page-sidebar navbar-collapse collapse">
-      <ul className="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-        <li className="nav-item start active">
-          <Link to={`/dashboard`}
-                className="nav-link nav-toggle">
-            <i className="icon-home"></i>
-            <span className="title">Dashboard</span>
-            <span className="selected"></span>
-          </Link>
-        </li>
-        <li className="nav-item">
-            <Link to={`/projects`}
-                  className="nav-link nav-toggle">
-              <i className="icon-layers"></i>
-              <span className="title">Projects</span>
-              <span className="selected"></span>
-            </Link>
-        </li>
-        <li className="nav-item">
-          <Link to={`/account`}
-                className="nav-link nav-toggle">
-            <i className="icon-user"></i>
-            <span className="title">Account</span>
-            <span className="selected"></span>
-          </Link>
-        </li>
-      </ul>
-    </div>
-  </div>
-);
+class SideNav extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			activeItem: '',
+		};
+	}
+
+	isLinkActive(url) {
+		return this.props.location.pathname.indexOf(url) !== -1;
+	}
+
+	render() {
+
+		return (
+      <div className="page-sidebar-wrapper">
+        <div className="page-sidebar navbar-collapse collapse">
+          <ul className="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+            <SideNavItem title="Dashboard" linkUrl='dashboard' isActive={() => this.isLinkActive('dashboard')}/>
+	          <SideNavItem title="Projects" linkUrl='projects' isActive={() => this.isLinkActive('projects')}/>
+	          <SideNavItem title="Account" linkUrl='account' isActive={() => this.isLinkActive('account')}/>
+          </ul>
+        </div>
+      </div>
+		)
+	}
+}
 
 export default SideNav;

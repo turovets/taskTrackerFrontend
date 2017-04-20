@@ -21,7 +21,7 @@ class Main extends Component {
 			<div>
         <Navbar />
 				<div className="page-container">
-					<SideNav />
+					<SideNav {...this.props} />
         	{this.props.children}
 				</div>
       </div>

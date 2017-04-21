@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import SideNavItem from './SideNavItem';
 
 class SideNav extends React.Component {

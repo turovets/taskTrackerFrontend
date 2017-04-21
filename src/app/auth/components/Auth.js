@@ -13,7 +13,10 @@ class Auth extends React.Component {
 				<div className="user-login-5">
 					<div className="row bs-reset">
 						<div className="col-md-6 login-container bs-reset">
-							<img className="login-logo login-6" src="/assets/pages/img/login/login-invert.png" />
+							<h2 style={{fontWeight: '500'}}
+								className="login-logo login-6">
+								Task<span style={{color: '#337ab7'}}>Tracker</span>
+							</h2>
 							<div className="login-content">
 								<h1>Metronic Admin Login</h1>
 								<p> Lorem ipsum dolor sit amet, coectetuer adipiscing elit sed diam nonummy et nibh euismod aliquam erat volutpat. Lorem ipsum dolor sit amet, coectetuer adipiscing. </p>

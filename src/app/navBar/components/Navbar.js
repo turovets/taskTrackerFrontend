@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router';
 import Logout from '../../auth/containers/Logout';
 
 class Navbar extends React.Component {
@@ -13,8 +14,11 @@ class Navbar extends React.Component {
 				<div className="page-header-inner ">
 
 					<div className="page-logo">
-						<a href="index.html">
-							<img src="assets/layouts/layout4/img/logo-light.png" alt="logdo" className="logo-default"/> </a>
+						<Link to={`/dashboard`}
+						   style={{textDecoration: 'none', fontSize: '24px', lineHeight: '75px'}}
+						>
+							TaskTracker
+						</Link>
 						<div className="menu-toggler sidebar-toggler">
 						</div>
 					</div>

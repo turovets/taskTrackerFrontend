@@ -83,14 +83,12 @@ class Dashboard extends React.Component {
 												<ul className="nav nav-stacked">
 													{
 														this.props.projects.projectList.length ?
-															<ul>
-																{this.props.projects.projectList.map(project => (
-																	<li key={project.id}>
-																		<a href="#">
-																			<span className="badge badge-info"> 6 </span> {project.name} </a>
-																	</li>
-																))}
-															</ul>
+															this.props.projects.projectList.map(project => (
+																<li key={project.id}>
+																	<a href="#">
+																		<span className="badge badge-info"> 6 </span> {project.name} </a>
+																</li>
+															))
 															:
 															<h4>No projects !</h4>
 													}

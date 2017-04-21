@@ -5,10 +5,11 @@ export const ADD_PROJECT = 'ADD_PROJECT';
 export const GET_PROJECTS_REQUEST = 'GET_PROJECT_REQUEST';
 export const GET_PROJECTS_SUCCESS = 'GET_PROJECT_SUCCESS';
 
-export const addProject = (text) => ({
+export const addProject = (project) => ({
 	type: ADD_PROJECT,
 	id: v4(),
-	name: text
+	name: project.name,
+	description: project.description
 });
 
 // export const requestProjects = () => {

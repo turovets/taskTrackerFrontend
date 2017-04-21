@@ -45,7 +45,6 @@ class TaskForm extends React.Component {
 		this.props.addTask(task)
 	};
 
-
 	render() {
 		let input;
 		return (
@@ -118,11 +117,8 @@ class TaskForm extends React.Component {
 						</div>
 					</div>
 					<div className="form-actions right todo-form-actions">
-						<button type="submit" className="btn btn-circle btn-sm green"
-						>
-							Save Changes
-						</button>
-						<button  className="btn btn-circle btn-sm btn-default">Cancel</button>
+						<button className="btn btn-circle btn-sm green">Save Changes</button>
+						<button className="btn btn-circle btn-sm btn-default">Cancel</button>
 					</div>
 				</div>
 			</form>

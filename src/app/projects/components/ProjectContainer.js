@@ -1,4 +1,5 @@
 import React from 'react';
+import ProjectForm from './ProjectForm'
 
 let Project = ({ }) => {
 
@@ -301,6 +302,9 @@ let Project = ({ }) => {
 							</div>
 						</div>
 					</div>
+				</div>
+				<div className="col-lg-6">
+					<ProjectForm />
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import projectContainer from '../components/ProjectContainer';
+import projectForm from '../components/ProjectForm';
 import { addProject } from '../actions'
 
 const mapStateToProps = (state) => ({
@@ -10,9 +10,9 @@ const mapDispatchToProps = {
 	addProject
 };
 
-let ProjectContainer = connect(
+let ProjectForm = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(projectContainer);
+)(projectForm);
 
-export default ProjectContainer
+export default ProjectForm

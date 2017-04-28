@@ -10,9 +10,7 @@ const project = (
 			return {
 				id: action.id,
 				name: action.name,
-				description: action.description,
-				dueDate: action.dueDate,
-				status: action.status
+				description: action.description
 			};
 
 		default:

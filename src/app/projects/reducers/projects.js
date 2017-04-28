@@ -21,7 +21,7 @@ const projects = (
 			let projectList = [...state.projectList];
 
 			projectList.push(
-				project(undefined, action)
+				project(action)
 			);
 
 			return {

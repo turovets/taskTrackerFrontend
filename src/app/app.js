@@ -8,7 +8,7 @@ import rootReducer from './rootReducer';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Dashboard from './dashboard/containers/dashboard';
 import Task from './tasks/containers/TaskContainer';
-import ProjectContainer from './projects/containers/ProjectContainer';
+import ProjectContainer from './projects/components/ProjectContainer';
 import Main from './Main';
 import Auth from './auth/components/Auth';
 import Login from './auth/containers/Login';

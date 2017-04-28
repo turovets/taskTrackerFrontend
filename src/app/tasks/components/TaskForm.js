@@ -42,7 +42,17 @@ class TaskForm extends React.Component {
 			status,
 		};
 
-		this.props.addTask(task)
+		this.props.addTask(task);
+		this.resetForm();
+	}
+
+	resetForm() {
+		this.setState({
+			title: '',
+			description: '',
+			dueDate: new Date().toISOString(),
+			status: 'Pending'
+		});
 	};
 
 	render() {

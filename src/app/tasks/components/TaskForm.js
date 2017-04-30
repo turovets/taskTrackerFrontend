@@ -7,7 +7,7 @@ class TaskForm extends React.Component {
 		this.state = {
 			title: '',
 			description: '',
-			dueDate: new Date().toISOString(),
+			dueDate: '',
 			status: 'Pending'
 		};
 

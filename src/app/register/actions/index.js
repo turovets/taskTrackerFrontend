@@ -5,13 +5,12 @@ export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 
-export const requestRegister = (creds) => ({
+export const requestRegister = () => ({
 	type: REGISTER_REQUEST,
-	isFetching: true,
-	creds
+	isFetching: true
 });
 
-export const receiveRegister = (user) => ({
+export const registerSuccess = (user) => ({
 	type: REGISTER_SUCCESS,
 	isFetching: false
 });
@@ -32,10 +31,10 @@ export const registerUser = (creds) => {
 	};
 
 	return dispatch => {
-		dispatch(requestRegister(creds));
+		dispatch(requestRegister());
 		return Request.post('/api/users', params)
 			.then((user) => {
-				dispatch(receiveRegister(user));
+				dispatch(registerSuccess(user));
 				browserHistory.push('/auth/login');
 			})
 			.catch((err) => {

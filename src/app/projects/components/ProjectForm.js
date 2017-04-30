@@ -29,7 +29,15 @@ class ProjectForm extends React.Component {
 			description
 		};
 
-		this.props.addProject(project)
+		this.props.addProject(project);
+		this.resetForm();
+	}
+
+	resetForm() {
+		this.setState({
+			name: '',
+			description: ''
+		});
 	};
 
 	render() {

@@ -1,10 +1,16 @@
 import React from 'react';
-import ProjectForm from '../containers/project'
-import { connect } from 'react-redux';
+import ProjectForm from '../containers/projectForm'
+import ProjectListItem from '../components/ProjectListItem'
 
 class ProjectContainer extends React.Component {
 	constructor(props) {
 		super(props)
+	}
+
+	componentDidMount() {
+		if (!this.props.projects.length) {
+				this.props.getProjects();
+		}
 	}
 
 	render() {
@@ -48,113 +54,16 @@ class ProjectContainer extends React.Component {
 									<div className="mt-list-container list-todo" id="accordion1" role="tablist"
 											 aria-multiselectable="true">
 										<div className="list-todo-line"></div>
-											{
-												this.props.projects.length ?
-													this.props.projects.map(project => (
-														<ul>
-															<li key={project.id} className="mt-list-item">
-																<div className="list-todo-icon bg-white">
-																	<i className="fa fa-database"></i>
-																</div>
-																<div className="list-todo-item dark">
-																	<a className="list-toggle-container" data-toggle="collapse" data-parent="#accordion1"
-																		 href="#task-1" aria-expanded="false">
-																		<div className="list-toggle done uppercase">
-																			<div className="list-toggle-title bold">{project.name}</div>
-																			<div className="badge badge-default pull-right bold">3</div>
-																		</div>
-																	</a>
-																	<div className="task-list panel-collapse collapse in" id="task-1">
-																		<ul>
-																			<li className="task-list-item done">
-																				<div className="task-icon">
-																					<a href="#">
-																						<i className="fa fa-database"></i>
-																					</a>
-																				</div>
-																				<div className="task-status">
-																					<a className="done" href="#">
-																						<i className="fa fa-check"></i>
-																					</a>
-																					<a className="pending" href="#">
-																						<i className="fa fa-close"></i>
-																					</a>
-																				</div>
-																				<div className="task-content">
-																					<h4 className="uppercase bold">
-																						<a href="#">Database Optimization</a>
-																					</h4>
-																					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum
-																						gravida mauris, a tincidunt dolor porttitor eu. </p>
-																				</div>
-																			</li>
-																			<li className="task-list-item">
-																				<div className="task-icon">
-																					<a href="#">
-																						<i className="fa fa-table"></i>
-																					</a>
-																				</div>
-																				<div className="task-status">
-																					<a className="done" href="#">
-																						<i className="fa fa-check"></i>
-																					</a>
-																					<a className="pending" href="#">
-																						<i className="fa fa-close"></i>
-																					</a>
-																				</div>
-																				<div className="task-content">
-																					<h4 className="uppercase bold">
-																						<a href="#">Table Sorting</a>
-																					</h4>
-																					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum
-																						gravida mauris, a tincidunt dolor porttitor eu. </p>
-																				</div>
-																			</li>
-																			<li className="task-list-item">
-																				<div className="task-icon">
-																					<a href="#">
-																						<i className="fa fa-pencil"></i>
-																					</a>
-																				</div>
-																				<div className="task-status">
-																					<a className="done" href="#">
-																						<i className="fa fa-check"></i>
-																					</a>
-																					<a className="pending" href="#">
-																						<i className="fa fa-close"></i>
-																					</a>
-																				</div>
-																				<div className="task-content">
-																					<h4 className="uppercase bold">
-																						<a href="#">Data Entry</a>
-																					</h4>
-																					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum
-																						gravida mauris, a tincidunt dolor porttitor eu. </p>
-																				</div>
-																			</li>
-																		</ul>
-																		<div className="task-footer bg-grey">
-																			<div className="row">
-																				<div className="col-xs-6">
-																					<a className="task-trash" href="#">
-																						<i className="fa fa-trash"></i>
-																					</a>
-																				</div>
-																				<div className="col-xs-6">
-																					<a className="task-add" href="#">
-																						<i className="fa fa-plus"></i>
-																					</a>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</li>
-														</ul>
-													))
-													:
-													<h4>No projects !</h4>
-											}
+
+										{this.props.projects.length ?
+											<ul>
+												{this.props.projects.map(project => (
+												<ProjectListItem key={project.id} project={project}/>
+												))}
+											</ul>
+											:
+											<h4>No projects !</h4>
+										}
 									</div>
 								</div>
 							</div>
@@ -169,12 +78,4 @@ class ProjectContainer extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
-	projects: state.projects.projectList
-});
-
-let projectContainer = connect(
-	mapStateToProps
-)(ProjectContainer);
-
-export default projectContainer;
+export default ProjectContainer;

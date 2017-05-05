@@ -1,5 +1,4 @@
 import React from 'react';
-import DatePicker from 'react-bootstrap-date-picker';
 
 class ProjectForm extends React.Component {
 	constructor(props) {

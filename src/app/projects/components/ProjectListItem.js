@@ -10,6 +10,7 @@ class ProjectListItem extends React.Component {
 
 	toggleProject() {
 		this.setState({ isOpen: !this.state.isOpen });
+		this.props.getProjectTasks(this.props.project.id)
 	}
 
 	render() {

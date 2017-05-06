@@ -58,7 +58,10 @@ class ProjectContainer extends React.Component {
 										{this.props.projects.length ?
 											<ul>
 												{this.props.projects.map(project => (
-												<ProjectListItem key={project.id} project={project}/>
+												<ProjectListItem
+														key={project.id}
+														project={project}
+														getProjectTasks={this.props.getProjectTasks}/>
 												))}
 											</ul>
 											:

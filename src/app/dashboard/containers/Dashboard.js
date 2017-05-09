@@ -4,7 +4,6 @@ import { fetchTasksIfNeeded } from '../../tasks/actions'
 import dashboardPage from '../components/dashboardPage'
 
 const mapStateToProps = (state) => ({
-	dashboard: state.dashboard,
 	projects: state.projects,
 	tasks: state.tasks
 });

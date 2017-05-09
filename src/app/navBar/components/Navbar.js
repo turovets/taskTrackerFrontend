@@ -55,9 +55,11 @@ class Navbar extends React.Component {
 													<a href="#">
 														<span className="time">just now</span>
 														<span className="details">
-                                                        <span className="label label-sm label-icon label-success">
-                                                            <i className="fa fa-plus"></i>
-                                                        </span> New user registered. </span>
+															<span className="label label-sm label-icon label-success">
+																	<i className="fa fa-plus"></i>
+															</span> 
+															New user registered.
+														</span>
 													</a>
 												</li>
 											</ul>

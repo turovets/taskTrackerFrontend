@@ -1,5 +1,4 @@
 import React from 'react';
-import { logoutUser } from '../actions';
 
 let Logout = ({ logoutUser }) => {
 

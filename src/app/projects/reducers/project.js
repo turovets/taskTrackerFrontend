@@ -1,4 +1,4 @@
-import { ADD_PROJECT, GET_PROJECTS_SUCCESS } from '../actions';
+import { ADD_PROJECT } from '../actions';
 
 const project = (
 	state,

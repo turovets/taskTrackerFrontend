@@ -1,17 +1,12 @@
 import React from 'react';
 
-class TaskListItem extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+const TaskItem = ({ task }) => {
 
-	render() {
-		const task = this.props.task;
 		return (
 			<li className="task-list-item done">
 				<div className="task-icon">
 					<a href="#">
-						<i className="fa fa-database"></i>
+						<i className="fa fa-table"></i>
 					</a>
 				</div>
 				<div className="task-status">
@@ -30,8 +25,7 @@ class TaskListItem extends React.Component {
 				</div>
 			</li>
 		);
-	}
-}
+};
 
-export default TaskListItem;
+export default TaskItem;
 

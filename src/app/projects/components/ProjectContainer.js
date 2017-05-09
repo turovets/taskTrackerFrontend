@@ -1,10 +1,10 @@
 import React from 'react';
 import ProjectForm from '../containers/projectForm'
-import ProjectListItem from '../components/ProjectListItem'
+import ProjectItem from '../containers/projectItem'
 
 class ProjectContainer extends React.Component {
 	constructor(props) {
-		super(props)
+		super(props);
 	}
 
 	componentDidMount() {
@@ -19,18 +19,6 @@ class ProjectContainer extends React.Component {
 				<div className="page-content">
 					<div className="col-lg-6">
 						<div className="portlet light portlet-fit bordered">
-							<div className="portlet-title">
-								<div className="caption">
-									<i className=" icon-layers font-green"></i>
-									<span className="caption-subject font-green bold uppercase">To Do List</span>
-									<div className="caption-desc font-grey-cascade"> Default list element style. Activate by adding
-										<pre className="mt-code">.list-todo</pre>
-										className to the
-										<pre className="mt-code">ul</pre>
-										element.
-									</div>
-								</div>
-							</div>
 							<div className="portlet-body">
 								<div className="mt-element-list">
 									<div className="mt-list-head list-todo red">
@@ -53,19 +41,16 @@ class ProjectContainer extends React.Component {
 									</div>
 									<div className="mt-list-container list-todo" id="accordion1" role="tablist"
 											 aria-multiselectable="true">
-										<div className="list-todo-line"></div>
-
 										{this.props.projects.length ?
 											<ul>
 												{this.props.projects.map(project => (
-												<ProjectListItem
+												<ProjectItem
 														key={project.id}
-														project={project}
-														getProjectTasks={this.props.getProjectTasks}/>
+														project={project}	/>
 												))}
 											</ul>
 											:
-											<h4>No projects !</h4>
+											<h4 style={{textAlign: 'center', padding: '20px'}}>No projects</h4>
 										}
 									</div>
 								</div>

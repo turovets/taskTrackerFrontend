@@ -35,13 +35,14 @@ export const requestGetTasks = () => ({
 
 export const receiveTasks = (tasks) => ({
 	type: GET_TASK_SUCCESS,
-	tasks: tasks,
+	tasks: tasks.content,
 	isFetching: false
 });
 
-export const receiveProjectTasks = (tasks) => ({
+export const receiveProjectTasks = (tasks, projectId) => ({
 	type: GET_PROJECT_TASKS_SUCCESS,
-	tasks: tasks,
+	tasks: tasks.content,
+	projectId: projectId,
 	isFetching: false
 });
 
@@ -61,16 +62,16 @@ export const addTaskServer = (task) => (dispatch) => {
 
 export const getTasks = () => (dispatch) => {
 	dispatch(requestGetTasks());
-	Request.get('/api/tasks')
+	Request.get('/api/tasks/my/0/10')
 		.then( tasks => {
 			dispatch(receiveTasks(tasks));
 		})
 };
 
 export const getProjectTasks = (projectId) => (dispatch) => {
-	Request.post('/api/tasks', {'projectId' : projectId})
+	Request.post('/api/tasks/0/10', {'projectId' : projectId})
 		.then( tasks => {
-			dispatch(receiveProjectTasks(tasks));
+			dispatch(receiveProjectTasks(tasks, projectId));
 		})
 };
 

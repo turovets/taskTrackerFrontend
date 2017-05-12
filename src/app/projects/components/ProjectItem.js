@@ -5,7 +5,8 @@ class ProjectItem extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isOpen: false
+			isOpen: false,
+			isModalOpen: false
 		}
 	}
 
@@ -16,10 +17,44 @@ class ProjectItem extends React.Component {
 		this.setState({ isOpen: !this.state.isOpen });
 	}
 
+	sendEmailBeforeDeleteProject(projectId) {
+		this.props.sendEmailDeleteProject(projectId);
+		this.setState({ isModalOpen: true })
+	}
+
+	handleDeleteProject(projectId) {
+		this.props.deleteProject(this.code.value, projectId);
+		this.setState({ isModalOpen: false })
+	}
+
+	handleCancelDeleteProject() {
+		this.setState({ isModalOpen: false });
+	}
+
 	render() {
 		const project = this.props.project;
 		return (
 			<li className="mt-list-item">
+				{this.state.isModalOpen ?
+					<div> Input verification code that we've sent to your email address
+						<input type="text"
+						       name="verificationCode"
+						       ref={(input) => this.code = input}
+						       placeholder="type verification code here"
+						       className="form-control" />
+						<button  type="submit"
+						         className="btn green"
+											onClick={() => this.handleDeleteProject(project.id)}>
+							Send
+						</button>
+						<button  type="submit"
+						         className="btn green"
+						         onClick={() => this.handleCancelDeleteProject()}>
+							Cancel
+						</button>
+					</div>
+					:null
+				}
 				<div className="list-todo-icon bg-white">
 					<i className="fa fa-database"></i>
 				</div>
@@ -46,7 +81,7 @@ class ProjectItem extends React.Component {
 							<div className="task-footer bg-grey">
 								<div className="row">
 									<div className="col-xs-6">
-										<a onClick={() => this.props.deleteProject(project.id)}
+										<a onClick={() => this.sendEmailBeforeDeleteProject(project.id)}
 											className="task-trash"
 											href="#">
 											<i className="fa fa-trash"></i>

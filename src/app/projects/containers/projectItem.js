@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import projectItem from '../components/ProjectItem';
-import { deleteProject } from '../actions';
+import { sendEmailDeleteProject, deleteProject } from '../actions';
 import { getProjectTasks } from '../../tasks/actions';
 
 const mapStateToProps = (state) => ({
@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
 	getProjectTasks,
+	sendEmailDeleteProject,
 	deleteProject
 };
 

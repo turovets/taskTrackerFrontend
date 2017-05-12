@@ -62,7 +62,7 @@ export const addTaskServer = (task) => (dispatch) => {
 
 export const getTasks = () => (dispatch) => {
 	dispatch(requestGetTasks());
-	Request.get('/api/tasks/my/0/10')
+	Request.post('/api/tasks/my/0/10', {})
 		.then( tasks => {
 			dispatch(receiveTasks(tasks));
 		})

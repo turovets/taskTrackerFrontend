@@ -1,4 +1,4 @@
-import { ADD_TASK } from '../actions'
+import { ADD_TASK, GET_TASK_SUCCESS } from '../actions'
 import task from './task'
 
 const tasks = (
@@ -15,10 +15,17 @@ const tasks = (
 				task(undefined, action)
 			);
 
-		return {
-			...state,
-			taskList
-		};
+			return {
+				...state,
+				taskList
+			};
+
+		case GET_TASK_SUCCESS: {
+			return {
+				...state,
+				taskList: action.tasks
+			}
+		}
 
 		default:
 			return state;

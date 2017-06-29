@@ -7,6 +7,7 @@ export const ADD_PROJECT_FAILURE = 'ADD_PROJECT_FAILURE';
 export const GET_PROJECTS_REQUEST = 'GET_PROJECT_REQUEST';
 export const GET_PROJECTS_SUCCESS = 'GET_PROJECT_SUCCESS';
 export const SEND_EMAIL_DELETE_PROJECT = 'SEND_EMAIL_DELETE_PROJECT';
+export const SEND_EMAIL_DELETE_PROJECT_ERROR = 'SEND_EMAIL_DELETE_PROJECT_ERROR';
 export const DELETE_PROJECT = 'DELETE_PROJECT';
 
 export const requestAddProject = () => ({
@@ -61,6 +62,10 @@ export const sendEmailDeleteProjectSuccess = (projectId) => ({
 	projectId
 });
 
+export const sendEmailDeleteProjectError = () => ({
+	type: SEND_EMAIL_DELETE_PROJECT_ERROR,
+});
+
 export const deleteProjectSuccess = (projectId) => ({
 	type: DELETE_PROJECT,
 	projectId
@@ -70,6 +75,9 @@ export const sendEmailDeleteProject = (projectId) => (dispatch) => {
 	Request.delete('/api/projects', {'projectId': projectId})
 		.then(res => {
 			dispatch(sendEmailDeleteProjectSuccess(projectId));
+		})
+		.catch((err) => {
+			dispatch(sendEmailDeleteProjectError());
 		})
 };
 

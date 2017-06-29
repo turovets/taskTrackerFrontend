@@ -71,7 +71,7 @@ class ProjectForm extends React.Component {
 							></textarea>
 						</div>
 						<div className="margin-top-40">
-							<button  type="submit" className="btn green">Create a project</button>
+							<button  type="submit" className="btn green">Create project</button>
 						</div>
 					</form>
 				</div>

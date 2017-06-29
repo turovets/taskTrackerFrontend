@@ -5,7 +5,8 @@ import {
 const auth = (
 	state = {
 		isFetching: false,
-		isAuthenticated: false
+		isAuthenticated: false,
+		errorMessage: ''
 	}, action
 ) => {
   switch (action.type) {

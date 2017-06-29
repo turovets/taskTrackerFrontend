@@ -21,7 +21,7 @@ const projects = (
 		case GET_PROJECT_TASKS_SUCCESS: {
 			let projectList = [...state.projectList];
 			
-			projectList.map((item) => {if (item.id === action.projectId) {item.tasks = action.tasks}});
+			projectList.map((item) => { if (item.id === action.projectId) { return item.tasks = action.tasks } });
 			
 			return {
 				...state,

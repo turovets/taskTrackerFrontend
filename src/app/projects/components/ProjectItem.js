@@ -36,22 +36,30 @@ class ProjectItem extends React.Component {
 		return (
 			<li className="mt-list-item">
 				{this.state.isModalOpen ?
-					<div> Input verification code that we've sent to your email address
-						<input type="text"
-						       name="verificationCode"
-						       ref={(input) => this.code = input}
-						       placeholder="type verification code here"
-						       className="form-control" />
-						<button  type="submit"
-						         className="btn green"
-											onClick={() => this.handleDeleteProject(project.id)}>
-							Send
-						</button>
-						<button  type="submit"
-						         className="btn green"
-						         onClick={() => this.handleCancelDeleteProject()}>
-							Cancel
-						</button>
+					<div style={{ position: 'fixed', left: '0', top: '0', height: '100%', width: '100%', background: 'rgba(0, 0, 0, 0.6)', zIndex: '100' }}>
+						<div style={{ position: 'absolute', left: '50%', top: '50%', background: 'white', transform: 'translate(-50%, -50%)', marginTop: '-100px' }}>
+							<div style={{ margin: '30px auto', width: '80%' }}>
+								<div className="form-group">
+									<label className="control-label">Input verification code that we've sent to your email address</label>
+									<input type="text"
+									       name="verificationCode"
+									       ref={(input) => this.code = input}
+									       placeholder="type verification code here"
+									       className="form-control" />
+								</div>
+								<button  type="submit"
+								         className="btn green"
+								         style={{marginRight: '15px'}}
+													onClick={() => this.handleDeleteProject(project.id)}>
+									Send
+								</button>
+								<button  type="submit"
+								         className="btn green"
+								         onClick={() => this.handleCancelDeleteProject()}>
+									Cancel
+								</button>
+							</div>
+						</div>
 					</div>
 					:null
 				}

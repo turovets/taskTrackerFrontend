@@ -19,14 +19,15 @@ class Login extends React.Component {
 
 	render() {
 
-
 		return (
 			<div>
 				<form action="#" className="login-form" method="post">
-					<div className="alert alert-danger display-hide">
-						<button className="close"></button>
-						<span>Enter any username and password. </span>
-					</div>
+					{this.props.auth.errorMessage ?
+						<div className="alert alert-danger display-hide">
+							<span>{ this.props.auth.errorMessage }</span>
+						</div>
+						: null
+					}
 					<div className="row">
 						<div className="col-xs-6">
 							<input type='text'
